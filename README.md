@@ -5,3 +5,4 @@ I have made this repository of TDD Katas implemented in PHP to teach and coach m
 Thus far, the available katas are
 
 1. FizzBuzz
+2. Leap Year
