@@ -10,6 +10,12 @@ class FizzBuzz
 {
     private int $number;
 
+    private array $mappings = [
+        3 => 'Fizz',
+        5 => 'Buzz',
+        7 => 'Bazz',
+    ];
+
     public function __construct(int $number)
     {
         $this->setNumber($number);
@@ -32,14 +38,10 @@ class FizzBuzz
     {
         $string = '';
 
-        if ($number % 3 == 0) {
-            $string .= 'Fizz';
-        }
-        if ($number % 5 == 0) {
-            $string .= 'Buzz';
-        }
-        if ($number % 7 == 0) {
-            $string .= 'Bazz';
+        foreach ($this->mappings as $divisor => $token) {
+            if ($number % $divisor == 0) {
+                $string .= $token;
+            }
         }
 
         return $string ?: strval($number);
