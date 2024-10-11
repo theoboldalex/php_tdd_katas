@@ -22,4 +22,9 @@ class FizzBuzzTest extends TestCase
         $fizzbuzz = new FizzBuzz(3);
         $this->assertEquals('Fizz', strval($fizzbuzz));
     }
+    public function test_multiple_of_five(): void
+    {
+        $fizzbuzz = new FizzBuzz(5);
+        $this->assertEquals('Buzz', strval($fizzbuzz));
+    }
 }
