@@ -36,9 +36,25 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals('Buzz', strval($fizzbuzz));
     }
 
-    public function test_multiple_of_three_and_five(): void
+    public function test_multiple_of_seven(): void
     {
-        $fizzbuzz = new FizzBuzz(15);
+        $fizzbuzz = new FizzBuzz(7);
+        $this->assertEquals('Bazz', strval($fizzbuzz));
+    }
+
+    public function test_combinations_of_multiples(): void
+    {
+        // 3 and 5
+        $fizzbuzz = new FizzBuzz(3 * 5);
         $this->assertEquals('FizzBuzz', strval($fizzbuzz));
+        // 3 and 7
+        $fizzbuzz = new FizzBuzz(3 * 7);
+        $this->assertEquals('FizzBazz', strval($fizzbuzz));
+        // 5 and 7
+        $fizzbuzz = new FizzBuzz(5 * 7);
+        $this->assertEquals('BuzzBazz', strval($fizzbuzz));
+        // 3, 5 and 7
+        $fizzbuzz = new FizzBuzz(3 * 5 * 7);
+        $this->assertEquals('FizzBuzzBazz', strval($fizzbuzz));
     }
 }
