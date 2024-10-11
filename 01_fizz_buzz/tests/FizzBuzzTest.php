@@ -36,8 +36,8 @@ class FizzBuzzTest extends TestCase
             'it returns two given two' => [2, "2"],
             'it returns Fizz given three' => [3, "Fizz"],
             'it returns Buzz given five' => [5, "Buzz"],
-            'it returns Buzz given five' => [15, "FizzBuzz"],
-            'it returns Bar given one hundred and five' => [7, "Bar"],
+            'it returns FizzBuzz given fifteen' => [15, "FizzBuzz"],
+            'it returns Bar given seven' => [7, "Bar"],
             'it returns FizzBuzzBar given one hundred and five' => [105, "FizzBuzzBar"],
         ];
     }
