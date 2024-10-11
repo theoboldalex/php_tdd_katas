@@ -38,6 +38,9 @@ class FizzBuzz
         if ($number % 5 == 0) {
             $string .= 'Buzz';
         }
+        if ($number % 7 == 0) {
+            $string .= 'Bazz';
+        }
 
         return $string ?: strval($number);
     }
