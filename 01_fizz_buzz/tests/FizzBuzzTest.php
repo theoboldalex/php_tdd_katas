@@ -24,6 +24,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals($token, strval($fizzbuzz));
     }
 
+    /**
+     * @param int[] $factors
+     */
     #[DataProvider('multipleFactorProvider')]
     public function test_number_with_multiple_factors(array $factors, string $token): void
     {
@@ -31,6 +34,9 @@ class FizzBuzzTest extends TestCase
         $this->assertEquals($token, strval($fizzbuzz));
     }
 
+    /**
+     * @return array<array<int,string>>
+     */
     public static function singleFactorProvider(): array
     {
         return [
@@ -41,6 +47,9 @@ class FizzBuzzTest extends TestCase
         ];
     }
 
+    /**
+     * @return array<array<array<int>,string>>
+     */
     public static function multipleFactorProvider(): array
     {
         return [
