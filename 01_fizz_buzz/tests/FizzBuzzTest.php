@@ -1,15 +1,25 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests;
 
-use PHPUnit\Framework\Attributes\CoversNothing;
+use App\FizzBuzz;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversNothing()]
+#[CoversClass(FizzBuzz::class)]
 class FizzBuzzTest extends TestCase
 {
-    public function test_the_truth(): void
+    public function test_returns_number(): void
     {
-        $this->assertTrue(true);
+        $fizzbuzz = new FizzBuzz(1);
+        $this->assertEquals('1', strval($fizzbuzz));
+    }
+
+    public function test_multiple_of_three(): void
+    {
+        $fizzbuzz = new FizzBuzz(3);
+        $this->assertEquals('Fizz', strval($fizzbuzz));
     }
 }
