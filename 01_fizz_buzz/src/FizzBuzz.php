@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App;
 
@@ -13,6 +15,14 @@ class FizzBuzz
 
     public function __toString(): string
     {
-        return strval($this->number);
+        return $this->fizbuzzify($this->number);
+    }
+
+    public function fizbuzzify(int $number): string
+    {
+        if ($number % 3 == 0) {
+            return 'Fizz';
+        }
+        return strval($number);
     }
 }
