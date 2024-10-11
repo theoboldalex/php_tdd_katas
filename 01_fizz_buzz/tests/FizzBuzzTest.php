@@ -22,8 +22,7 @@ class FizzBuzzTest extends TestCase
     public function test_it_calculates_fizzbuzz_inputs(
         int $input,
         string $expected
-    ): void
-    {
+    ): void {
         $sut = new FizzBuzz;
         $result = $sut->calculate($input);
         $this->assertEquals($expected, $result);
