@@ -21,16 +21,11 @@ class FizzBuzz
         $result = null;
 
         foreach (self::RESULT_MAP as $index => $resultPart) {
-            if ($this->isDivisbleBy($number, $index)) {
+            if (Math::isDivisbleBy($number, $index)) {
                 $result .= $resultPart;
             }
         }
 
         return $result ?? (string) $number;
-    }
-
-    private function isDivisbleBy(int $dividend, int $divisor): bool
-    {
-        return $dividend % $divisor === 0;
     }
 }
