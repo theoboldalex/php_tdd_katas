@@ -1,11 +1,10 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace App\Tests;
 
 use App\FizzBuzz;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass(FizzBuzz::class)]
@@ -18,43 +17,49 @@ class FizzBuzzTest extends TestCase
         $valid = new FizzBuzz(1);
     }
 
-    public function test_returns_number(): void
+    #[DataProvider('singleFactorProvider')]
+    public function test_number_with_single_factor(int $number, string $token): void
     {
-        $fizzbuzz = new FizzBuzz(1);
-        $this->assertEquals('1', strval($fizzbuzz));
+        $fizzbuzz = new FizzBuzz($number);
+        $this->assertEquals($token, strval($fizzbuzz));
     }
 
-    public function test_multiple_of_three(): void
+    #[DataProvider('multipleFactorProvider')]
+    public function test_number_with_multiple_factors(array $factors, string $token): void
     {
-        $fizzbuzz = new FizzBuzz(3);
-        $this->assertEquals('Fizz', strval($fizzbuzz));
+        $fizzbuzz = new FizzBuzz(array_product($factors));
+        $this->assertEquals($token, strval($fizzbuzz));
     }
 
-    public function test_multiple_of_five(): void
+    public static function singleFactorProvider(): array
     {
-        $fizzbuzz = new FizzBuzz(5);
-        $this->assertEquals('Buzz', strval($fizzbuzz));
+        return [
+            [1, '1'],
+            [3, 'Fizz'],
+            [5, 'Buzz'],
+            [7, 'Bazz'],
+        ];
     }
 
-    public function test_multiple_of_seven(): void
+    public static function multipleFactorProvider(): array
     {
-        $fizzbuzz = new FizzBuzz(7);
-        $this->assertEquals('Bazz', strval($fizzbuzz));
-    }
-
-    public function test_combinations_of_multiples(): void
-    {
-        // 3 and 5
-        $fizzbuzz = new FizzBuzz(3 * 5);
-        $this->assertEquals('FizzBuzz', strval($fizzbuzz));
-        // 3 and 7
-        $fizzbuzz = new FizzBuzz(3 * 7);
-        $this->assertEquals('FizzBazz', strval($fizzbuzz));
-        // 5 and 7
-        $fizzbuzz = new FizzBuzz(5 * 7);
-        $this->assertEquals('BuzzBazz', strval($fizzbuzz));
-        // 3, 5 and 7
-        $fizzbuzz = new FizzBuzz(3 * 5 * 7);
-        $this->assertEquals('FizzBuzzBazz', strval($fizzbuzz));
+        return [
+            [
+                'factors' => [3, 5],
+                'token' => 'FizzBuzz'
+            ],
+            [
+                'factors' => [3, 7],
+                'token' => 'FizzBazz'
+            ],
+            [
+                'factors' => [5, 7],
+                'token' => 'BuzzBazz'
+            ],
+            [
+                'factors' => [3, 5, 7],
+                'token' => 'FizzBuzzBazz'
+            ],
+        ];
     }
 }
