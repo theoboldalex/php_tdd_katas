@@ -11,3 +11,4 @@ Thus far, the available katas are
 
 1. FizzBuzz
 2. Leap Year
+3. Twelve days of Christmas
